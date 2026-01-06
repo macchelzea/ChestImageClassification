@@ -1,0 +1,36 @@
+schema: '2.0'
+stages:
+  stage_1:
+    cmd: python pipeline/stage_01.py
+    deps:
+    - path: artifacts/input.txt
+      hash: md5
+      md5: 69995e6219e6bcd9ece0db65c530ebed
+      size: 45
+    - path: pipeline/stage_01.py
+      hash: md5
+      md5: 7789d095ed566996e8c41dfd5dcb5f5e
+      size: 73
+  stage_2:
+    cmd: python pipeline/stage_02.py
+    deps:
+    - path: pipeline/stage_02.py
+      hash: md5
+      md5: 5c7b0e6f1819ab9dc293f0d4a14cbe0b
+      size: 243
+    outs:
+    - path: artifacts/output.txt
+      hash: md5
+      md5: 6a36c827ce7c34c2bfc10c5b9771fbec
+      size: 28
+  stage_3:
+    cmd: python pipeline/stage_03.py
+    deps:
+    - path: artifacts/output.txt
+      hash: md5
+      md5: 6a36c827ce7c34c2bfc10c5b9771fbec
+      size: 28
+    - path: pipeline/stage_03.py
+      hash: md5
+      md5: cfc8a70292bddad8bcab823877ea9404
+      size: 73
